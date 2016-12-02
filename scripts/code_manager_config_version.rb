@@ -7,7 +7,7 @@ r10k_deploy_file_path = File.join(environmentpath, environment, '.r10k-deploy.js
 
 sha = JSON.parse(File.read(r10k_deploy_file_path))['signature']
 
-str  = `git ls-remote --tags https://github.com/ncorrare/control-repo-tests | grep #{environment} |awk -F/ '{print $3}'`
+str  = `git ls-remote --tags https://github.com/ncorrare/control-repo-tests | grep #{sha} |awk -F/ '{print $3}'`
 tag = str.delete!("\n")
 if str.nil?
 		output = "#{environment}/#{sha}"
